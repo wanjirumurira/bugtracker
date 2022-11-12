@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.hashers import make_password
+from django.utils import timezone
 #AbstractUser: Use this option if you are happy with the existing fields on the 
 # User model and just want to remove the username field.
 
@@ -45,6 +46,9 @@ class CustomUserManager(BaseUserManager):
 
 class CustomUser(AbstractUser):
     email = models.EmailField("email address", unique=True)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    date_joined = models.DateTimeField(default=timezone.now)
 
     USERNAME_FIELD="email"
     REQUIRED_FIELDS=[]
