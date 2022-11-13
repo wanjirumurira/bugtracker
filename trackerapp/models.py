@@ -13,23 +13,23 @@ class CustomUserManager(BaseUserManager):
     Django by default adds the objects manager to every model that is created in the application. 
     add a custom Manager, by subclassing BaseUserManager, that uses an email as the unique identifier instead of a username
     '''
-    def _create_user(self, email, password, **extra_fields):
+    def _create_user(self, email, username, password, **extra_fields):
         """
         Create and save a User with the given email and password.
         """
         if not email:
             raise ValueError("User must have an email")
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+        user = self.model(email=email,username=username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
     
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, email, username, password=None, **extra_fields):
         extra_fields.setdefault("is_superuser", False)
-        return self._create_user(email, password, **extra_fields)
+        return self._create_user(email, username, password, **extra_fields)
     
-    def create_superuser(self, email, password=None, **extra_fields):
+    def create_superuser(self, email, username, password=None, **extra_fields):
         """
         Create and save a SuperUser with the given email and password.
         """
@@ -42,16 +42,17 @@ class CustomUserManager(BaseUserManager):
             raise ValueError(_('Superuser must have is_staff=True.'))
         if extra_fields.get('is_superuser') is not True:
             raise ValueError(_('Superuser must have is_superuser=True.'))
-        return self._create_user(email, password, **extra_fields)    
+        return self._create_user(email, username, password, **extra_fields)    
 
 class CustomUser(AbstractUser):
     email = models.EmailField("email address", unique=True)
+    username = models.CharField("username", max_length=150,unique=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
 
     USERNAME_FIELD="email"
-    REQUIRED_FIELDS=[]
+    REQUIRED_FIELDS=["username"]
 
     objects = CustomUserManager()
 
