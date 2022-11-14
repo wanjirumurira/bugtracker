@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from . models import CustomUser
 
@@ -16,6 +17,11 @@ def register(request):
         password = request.POST['password']
         password2 = request.POST['password2']
         if password == password2:
+            if CustomUser.objects.filter(username=username).exists():
+                messages.info(request, 'Username is Already Taken')
+            elif CustomUser.objects.filter(email=email).exists():
+                messages.info(request, 'Email is Already Taken')
+            else:
                 user = CustomUser.objects.create_user(email=email,username=username,password=password)
                 user.save()
                 return redirect('login')
@@ -31,10 +37,13 @@ def sign_in(request):
         user = authenticate(request,email=email,password=password)
         if user is not None:
             login(request, user)
-            return redirect('login')
+            return redirect('index')
         else:
             messages.info(request, "Invalid Password or Username")
             return redirect('login')
     return render(request,'signin.html')
         
-   
+def sign_out(request):
+    logout(request)
+    return redirect('login')
+    
