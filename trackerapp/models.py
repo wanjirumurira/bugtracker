@@ -58,6 +58,18 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
+
+class Project(models.Model):
+    project_name = models.CharField(max_length=150,unique=True)
+    description = models.TextField(blank=True)
+    create_at = models.DateField(auto_now_add=True)
+    contributors = models.ManyToManyField(CustomUser,related_name="contributors")
+
+    def __str__(self):
+        return self.project_name
+
+    
+
     
 
 

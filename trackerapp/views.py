@@ -3,12 +3,25 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from . models import CustomUser
+from . models import *
 
 # Create your views here.
 def index(request):
-    return render (request,'index.html')
+    new_project = Project.objects.all()
+    users = CustomUser.objects.all()
+    contributors = users.contributors.all()
+    context = {'new_project':new_project,'contributors':contributors}
 
+    return render (request,'index.html',context)
+
+def create_project(request):
+    if request.method == 'POST':
+        # project_name = request.POST["projectname"]
+        # contributors = request.POST.getlist("contributors")
+
+        # project_description = request.POST["projectdescription"]
+        
+        return redirect('index')
 
 def register(request):
     if request.method == 'POST':

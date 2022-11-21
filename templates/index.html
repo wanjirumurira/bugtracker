@@ -10,23 +10,23 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        ---
-        <link rel="stylesheet" href="{% static 'assets1/css/icons.css' %}">
-        <link rel="stylesheet" href="{% static 'assets1/css/uikit.css' %}">
-        <link rel="stylesheet" href="{% static 'assets1/css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'assets1/css/tailwind.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
     
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        ----
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" href="fonts/icomoon/style.css">
+        <link rel="stylesheet" href="{% static 'css/chosen.css' %}">
+        
     </head>
     <body>
-        <div class="d-flex" id="wrapper">
+        <div class="d-flex bg-light" id="wrapper">
             <!-- Sidebar-->
-            <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
-                <div class="list-group list-group-flush">
+            <div class="border-end  list-group-item-light" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom ">Bug Tracker</div>
+                <div class="list-group list-group-flush ">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
@@ -38,16 +38,16 @@
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
-                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                    <div class="container-fluid">
-                        <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom bg-white">
+                    <div class="container-fluid bg-white">
+                        <button class="" id="sidebarToggle">Toggle Menu</button>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                                 <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#!">Projects</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#!">Bug Issues</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                                <li class="nav-item active"><a class="nav-link" href="#!">Projects</a></li>
+                                <li class="nav-item active "><a class="nav-link" href="#!">Bug Issues</a></li>
+                                <li class="nav-item active"><a class="nav-link" href="/logout">Logout</a></li>
                                 <!-- <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -62,97 +62,83 @@
                     </div>
                 </nav>
                 <!-- Page content-->
-                <div class="container-fluid">
-                    <h1 class="mt-4">Projects</h1>
-                    <div class="row">
-                        <!-- column -->
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="right-side lg:pr-8">
-                                        <!-- upload -->
-                                       <a href="#"
-                                           class="">
-                                           <ion-icon name="add-circle" class="-mb-1
-                                            mr-1 opacity-90 text-xl uilus-circle"></ion-icon> Create New Project
-                                       </a>
-                                        <!-- upload dropdown box -->
-                                       <div uk-dropdown="pos: top-right;mode:click ; animation: uk-animation-slide-bottom-small" class="header_dropdown">
-                   
-                                           <div class="mb-3">
-                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Project Name">
-                                            </div>
-                                            <div class="mb-3">
-                                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Project Description">
-                                            </div>
-                                            <div class="mb-3">
-                                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Project Description">
-                                            </div>
-                                            <a href=""><button type="submit" value="create">Create</button></a>
-                                       </div>
-                                   </div>
+                
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    Create New Project
+                </button>
+                
+                
+                <div class="row  bg">
+                    <!-- column -->
+                    <div class="col-20 bg-light">
+                        <div class=" bg-light">
+                                <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content rounded-0">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">New Project</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true"><span class="icon-close2"></span></span>
+                                        </button>
+                                    </div>
+                                    <form action="create_project" method="POST"> {% csrf_token %}
+                                    <div class="modal-body col-20">
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" name ="projectname" id="formGroupExampleInput2" placeholder="Project Name">
+                                        </div>  
+                                        
+                                        <div class="mb-3">
+                                            <textarea name="projectdescription" class="form-control" id="formGroupExampleInput2" cols="50" rows="5" placeholder="Project Description"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                        <select data-placeholder="Select the Project Contributers                                                                       " id="formGroupExampleInput2" multiple class="chosen-select form-control" tabindex="8">
+                                            <!-- {% for contributor in contributors%} -->
+                                            <option>contributors</option>
+                                            <!-- {% endfor %} -->
+                                        </select>
+                                        </div>
+                                        
+                                        
+                                            <div class="mr-3">
+                                            <button id="submit" name="button" value="register" class="btn btn-primary mr-3">Submit</button>
+                                            <a href="/index"><button id="cancel" name="button" value="cancel" class="btn btn-secondary">Cancel</button>
+                                            </div></a>
+                                    </form>
+                                            
+                                    </div> 
+                                    </div>
+                                    </div>
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th class="border-top-0">Project Name</th>
-                                                <th class="border-top-0">Description</th>
-                                                <th class="border-top-0">Contibuters</th>
-                                                <th class="border-top-0">Date Created</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-    
-                                                <td class="txt-oflo">Elite admin</td>
-                                                <td><span class="label label-success label-rounded">SALE</span> </td>
-                                                <td class="txt-oflo">April 18, 2021</td>
-                                                <td><span class="font-medium">$24</span></td>
-                                            </tr>
-                                            <tr>
-    
-                                                <td class="txt-oflo">Real Homes WP Theme</td>
-                                                <td><span class="label label-info label-rounded">EXTENDED</span></td>
-                                                <td class="txt-oflo">April 19, 2021</td>
-                                                <td><span class="font-medium">$1250</span></td>
-                                            </tr>
-                                            <tr>
-    
-                                                <td class="txt-oflo">Ample Admin</td>
-                                                <td><span class="label label-purple label-rounded">Tax</span></td>
-                                                <td class="txt-oflo">April 19, 2021</td>
-                                                <td><span class="font-medium">$1250</span></td>
-                                            </tr>
-                                            <tr>
-    
-                                                <td class="txt-oflo">Medical Pro WP Theme</td>
-                                                <td><span class="label label-success label-rounded">Sale</span></td>
-                                                <td class="txt-oflo">April 20, 2021</td>
-                                                <td><span class="font-medium">-$24</span></td>
-                                            </tr>
-                                            <tr>
-    
-                                                <td class="txt-oflo">Hosting press html</td>
-                                                <td><span class="label label-success label-rounded">SALE</span></td>
-                                                <td class="txt-oflo">April 21, 2021</td>
-                                                <td><span class="font-medium">$24</span></td>
-                                            </tr>
-                                            <tr>
-    
-                                                <td class="txt-oflo">Digital Agency PSD</td>
-                                                <td><span class="label label-danger label-rounded">Tax</span> </td>
-                                                <td class="txt-oflo">April 23, 2021</td>
-                                                <td><span class="font-medium">-$14</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                            </div>
+                            
+                            <div class="table-responsive ">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">Project Name</th>
+                                            <th class="border-top-0">Project Description</th>
+                                            <th class="border-top-0">Project Contibutors</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            {%  for items in new_project %}
+                                            <td class="txt-oflo">{{items.project_name}}</td>
+                                            <td><span class="label label-success label-rounded">{{items.description}}</span> </td>
+                                            <td class="txt-oflo">{{contributors}}</td>
+                                            {% endfor %}
+                                        </tr>
+                                          
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
+               
             </div>
         </div>
         
@@ -161,12 +147,18 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="{% static 'js/scripts1.js' %}"></script>
-        ----
-        <script src="{% static 'assets1/js/tippy.all.min.js' %}"></script>  
-    <script src="{% static 'assets1/js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'assets1/js/uikit.js' %}"></script>
-    <script src="{% static 'assets1/js/simplebar.js' %}"></script>
-    <script src="{% static 'assets1/js/custom.js' %}"></script>
-        -----
+
+        <script src="{% static 'assets/js/tippy.all.min.js' %}"></script>  
+    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/uikit.js' %}"></script>
+    <script src="{% static 'assets/js/simplebar.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+        <script src="{%static 'js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/chosen.jquery.min.js' %}"></script>
+        <script src="{% static 'js/select.js' %}"></script>
+    
     </body>
 </html>
