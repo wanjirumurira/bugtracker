@@ -8,9 +8,10 @@ from . models import *
 # Create your views here.
 def index(request):
     new_project = Project.objects.all()
-    users = CustomUser.objects.all()
-    contributors = users.contributors.all()
-    context = {'new_project':new_project,'contributors':contributors}
+    
+    
+    
+    context = {'new_project':new_project}
 
     return render (request,'index.html',context)
 

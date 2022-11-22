@@ -13,10 +13,11 @@
         <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
-    
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
         <link rel="stylesheet" href="fonts/icomoon/style.css">
         <link rel="stylesheet" href="{% static 'css/chosen.css' %}">
         
@@ -124,13 +125,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {%  for items in new_project %}
                                         <tr>
-                                            {%  for items in new_project %}
-                                            <td class="txt-oflo">{{items.project_name}}</td>
-                                            <td><span class="label label-success label-rounded">{{items.description}}</span> </td>
-                                            <td class="txt-oflo">{{contributors}}</td>
-                                            {% endfor %}
+                                            <td class="">{{items.project_name}}</td>
+                                            <td>{{items.description}}</td>
+                                           
+                                            <td class="">{{items.contributors.all}}</td>
+                                            
+
                                         </tr>
+                                        {% endfor %}
                                           
                                     </tbody>
                                 </table>
