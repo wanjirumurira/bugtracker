@@ -70,7 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'tracker.wsgi.application'
-AUTH_USER_MODEL = 'trackerapp.CustomUser'
+AUTH_USER_MODEL = 'trackerapp.User'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

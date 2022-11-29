@@ -125,16 +125,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {%  for items in new_project %}
+                                        {%  for items in new_project%}
                                         <tr>
-                                            <td class="">{{items.project_name}}</td>
+                                            <td class="">{{project_name}}</td>
                                             <td>{{items.description}}</td>
-                                           
-                                            <td class="">{{items.contributors.all}}</td>
                                             
-
+                                            
+                                            
+                                            <td class="">{{items.contributors.all}}</td>
+                                             
+                                            
                                         </tr>
                                         {% endfor %}
+                                       
+                                        
+                                        
+
                                           
                                     </tbody>
                                 </table>

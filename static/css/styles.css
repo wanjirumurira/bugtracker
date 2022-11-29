@@ -304,7 +304,10 @@ svg {
 table {
   caption-side: bottom;
   border-collapse: collapse;
-}
+  overflow:hidden;
+  table-layout:fixed;
+}​
+
 
 caption {
   padding-top: 0.5rem;

@@ -9,7 +9,7 @@ from . models import *
 def index(request):
     new_project = Project.objects.all()
     
-    
+   
     
     context = {'new_project':new_project}
 
