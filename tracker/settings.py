@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'trackerapp'
+    'trackerapp',
+    'multiselectfield',
+
 ]
 AUTH_USER_MODEL = 'trackerapp.CustomUsers'
 MIDDLEWARE = [

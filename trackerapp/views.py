@@ -28,6 +28,9 @@ def create_project(request):
         new_project.contributors.add(*contributors)
         return redirect('index')
 
+def create_issue(request):
+    return render(request, "issues.html")
+
 
 def register(request):
     if request.method == 'POST':
