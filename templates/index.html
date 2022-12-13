@@ -83,7 +83,8 @@
                                         <span aria-hidden="true"><span class="icon-close2"></span></span>
                                         </button>
                                     </div>
-                                    <form action="create_project" method="POST"> {% csrf_token %}
+                                    <form action="create_project" method="POST"> 
+                                    {% csrf_token %}
                                     <div class="modal-body col-20">
                                         <div class="mb-3">
                                             <input type="text" class="form-control" name ="projectname" id="formGroupExampleInput2" placeholder="Project Name">
@@ -94,11 +95,11 @@
                                         </div>
 
                                         <div class="mb-3">
-                                        <select data-placeholder="Select the Project Contributers                                                                       " id="formGroupExampleInput2" multiple class="chosen-select form-control" tabindex="8">
-                                            <!-- {% for contributor in contributors%} -->
-                                            <option>contributors</option>
-                                            <!-- {% endfor %} -->
-                                        </select>
+                                            <select name = "contributors" data-placeholder="Select the Project Contributers                                                                      " id="formGroupExampleInput2" multiple class="chosen-select form-control" tabindex="8">
+                                                {% for user in users %} 
+                                                <option value ="{{user.id}}">{{user}}</option>
+                                                {% endfor %}
+                                            </select>
                                         </div>
                                         
                                         
@@ -125,15 +126,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {%  for items in new_project%}
+                                        {%  for items in new_project %}
                                         <tr>
-                                            <td class="">{{project_name}}</td>
+                                            <a href="#"><td >{{items.project_name}}</td></a>
                                             <td>{{items.description}}</td>
                                             
+                                            <td >
+                                                {% for contributor in items.contributors.all %}
+                                                <li>{{contributor.username}}</li>
+                                                {% endfor %}
+                                            </td>
                                             
-                                            
-                                            <td class="">{{items.contributors.all}}</td>
-                                             
                                             
                                         </tr>
                                         {% endfor %}

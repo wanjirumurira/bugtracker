@@ -18,15 +18,17 @@ class User(AbstractUser):
 
 class Project(models.Model):
     project_name = models.CharField(max_length=150,unique=True)
-    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     description = models.TextField(blank=True)
     contributors = models.ManyToManyField(User,related_name="contributors")
     create_at = models.DateField(auto_now_add=True)
-
-
+    
 
     def __str__(self):
         return self.project_name
+
+class BugTicket(models.Model):
+    pass
+
 
     
 
