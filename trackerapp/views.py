@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 from . models import *
 
 # Create your views here.
@@ -28,7 +29,9 @@ def create_project(request):
         new_project.contributors.add(*contributors)
         return redirect('index')
 
-def create_issue(request):
+def create_issue(request, pk):
+    project = Project.objects.get(project_name = pk)
+    
     return render(request, "issues.html")
 
 

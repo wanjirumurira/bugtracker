@@ -128,9 +128,9 @@
                                     <tbody>
                                         {%  for items in new_project %}
                                         <tr>
-                                            <a href="#!"><td >{{items.project_name}}</td></a>
-                                            <a href=""><td>{{items.description}}</td></a>
-                                            
+                                            <td><a href="/issues/{{items.project_name}}">{{items.project_name}}</a></td>
+                                            <td>{{items.description}}</td>
+
                                             <td >
                                                 {% for contributor in items.contributors.all %}
                                                 <li>{{contributor.username}}</li>
