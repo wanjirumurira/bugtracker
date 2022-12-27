@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User,Project
+from .models import *
 from .forms import *
 """
 We also need to register our custom user model with the admin
@@ -27,4 +27,5 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(Project)
+admin.site.register(CreateIssue)
 

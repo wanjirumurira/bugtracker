@@ -31,8 +31,10 @@ def create_project(request):
 
 def create_issue(request, pk):
     project = Project.objects.get(project_name = pk)
-    
-    return render(request, "issues.html")
+    issue = CreateIssue.objects.all()
+    context = {'issue':issue}
+
+    return render(request, "issues.html", context)
 
 
 def register(request):

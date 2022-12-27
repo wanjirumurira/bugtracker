@@ -72,17 +72,23 @@
                                         <span aria-hidden="true"><span class="icon-close2"></span></span>
                                         </button>
                                     </div>
-                                    <form action="create_project" method="POST"> 
+                                    <form action="/create_project" method="POST"> 
                                     {% csrf_token %}
                                     <div class="modal-body col-20">
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" name ="projectname" id="formGroupExampleInput2" placeholder="Project Name">
+                                            <input type="text" class="form-control" name ="issuename" id="formGroupExampleInput2" placeholder="Issue Name">
                                         </div>  
                                         
                                         <div class="mb-3">
-                                            <textarea name="projectdescription" class="form-control" id="formGroupExampleInput2" cols="50" rows="5" placeholder="Project Description"></textarea>
+                                            <textarea name="issuedescription" class="form-control" id="formGroupExampleInput2" cols="50" rows="5" placeholder="Issue Description"></textarea>
                                         </div>
 
+                                        <div class="mb-3">
+                                            <label for=""> Issue Image(Optional)</label>
+                                            <img width="" height="" src="{{issue.issue_description.url}}" alt="">
+                                            <input type="file" class="form-control" name ="issueimage" id="formGroupExampleInput2" placeholder="Issue Image">
+                                        </div>
+                                        
                                         <div class="mb-3">
                                             <select name = "contributors" data-placeholder="Select the Project Contributers                                                                      " id="formGroupExampleInput2" multiple class="chosen-select form-control" tabindex="8">
                                                 {% for user in users %} 
@@ -90,7 +96,20 @@
                                                 {% endfor %}
                                             </select>
                                         </div>
+
+                                        <div class="mb-3">
+                                            <select name = "status" data-placeholder="Issue Status                                                                                                   " id="formGroupExampleInput2" multiple class="chosen-select form-control" tabindex="8">
+                                                {% for issues in issue %}
+                                                <option value ="{{issue.id}}">{{issues.issue_status}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
                                         
+                                        <div class="mb-3">
+                                            <select name = "priority" data-placeholder="Select the Project Contributers                                                                      " id="formGroupExampleInput2" multiple class="chosen-select form-control" tabindex="8">
+                                                <option value ="{{user.id}}">{{user}}</option>   
+                                            </select>
+                                        </div>
                                         
                                             <div class="mr-3">
                                             <button id="submit" name="button" value="register" class="btn btn-primary mr-3">Submit</button>

@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from multiselectfield import MultiSelectField
 from django.utils import timezone
 import uuid
 
@@ -30,18 +29,18 @@ class CreateIssue(models.Model):
               ('Closed', 'Closed'),
               ('Reopened', 'Reopened'))
 
-    priority_choice = (('Low Severity', 'Low Severity'),
-               ('Medium Severity', 'Medium Severity'),
-               ('High Severity', 'High Severity'),
+    priority_choice = (('Low Severity', 'Low'),
+               ('Medium Severity', 'Medium '),
+               ('High Severity', 'High'),
               )
     issue_name = models.CharField(max_length=150)
     issue_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     issue_description = models.TextField(blank=True)
-    issue_screenshort = models.ImageField(upload_to="screenshorts",blank=True, null=True)
+    issue_image = models.ImageField(upload_to="screenshorts",default="default-bug.jpg", null=True)
     created_by = models.CharField(max_length=150)
     assigned_to = models.ManyToManyField(User)
-    issue_status = MultiSelectField(status_choice, max_choices=1, max_length=1)
-    issue_priority = MultiSelectField(priority_choice, max_choices=1, max_length=1)
+    issue_status = models.CharField(choices = status_choice, max_length=150, default='New')
+    issue_severity = models.CharField(choices = priority_choice, max_length=150, default='High')
 
     def __str__(self):
         return self.issue_name
